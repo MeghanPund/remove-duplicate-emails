@@ -4,6 +4,10 @@ email_file2 = open('/Users/Brazuka/Desktop/RemoveDuplicateEmails/campmerlotemail
 # compile lists
 content = email_file.read() + email_file2.read()
 
+# close the O.G. email list files
+email_file.close()
+email_file2.close()
+
 # all characters lowercase, split at commas (,)
 email_list = content.lower().split(',')
 
@@ -23,5 +27,3 @@ update_email_list = open('/Users/Brazuka/Desktop/RemoveDuplicateEmails/updatedja
 
 # sort(alphabetize) list and format for use in gmail
 update_email_list.write(str(sorted(new_list)).replace(",", ";").replace("'", ""))
-
-email_file.close()
