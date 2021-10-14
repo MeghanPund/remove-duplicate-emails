@@ -10,7 +10,7 @@ email_list = content.lower().split(',')
 # this will be the compiled list
 new_list = []
 
-# remove duplicate emails
+# remove duplicate emails and strip list items of whitespace
 for email in email_list:
     if email not in new_list:
         new_list.append(email.strip())
