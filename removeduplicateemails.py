@@ -1,3 +1,4 @@
+# open files for reading
 email_file = open('/Users/Brazuka/Desktop/RemoveDuplicateEmails/jazzhangsemails.txt', 'r')
 email_file2 = open('/Users/Brazuka/Desktop/RemoveDuplicateEmails/campmerlotemails.txt', 'r')
 
@@ -22,8 +23,8 @@ for email in email_list:
 # for testing
 print(sorted(new_list))
 
-# write new list to file
+# open file for writing new email list
 update_email_list = open('/Users/Brazuka/Desktop/RemoveDuplicateEmails/updatedjazzhangsemails.txt', 'w')
 
-# sort(alphabetize) list and format for use in gmail
+# sort(alphabetize) list and format for use in gmail, then write new list to file
 update_email_list.write(str(sorted(new_list)).replace(",", ";").replace("'", ""))
