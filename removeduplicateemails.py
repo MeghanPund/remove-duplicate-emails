@@ -3,14 +3,14 @@ email_file = open('/Users/Brazuka/Desktop/RemoveDuplicateEmails/jazzhangsemails.
 email_file2 = open('/Users/Brazuka/Desktop/RemoveDuplicateEmails/campmerlotemails.txt', 'r')
 
 # compile lists
-content = email_file.read() + email_file2.read()
+email_list = email_file.read() + email_file2.read()
 
 # close the O.G. email list files
 email_file.close()
 email_file2.close()
 
 # all characters lowercase, split at commas (,)
-email_list = content.lower().split(',')
+email_list = email_list.lower().split(',')
 
 # this will be the compiled list
 new_list = []
