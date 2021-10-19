@@ -23,6 +23,9 @@ for email in email_list:
 # for testing
 print(sorted(new_list))
 
+# print how many emails are present in the list
+print("There are " + str(len(new_list)) + " unique emails in your list." )
+
 # open file for writing new email list
 updated_email_list = open('/Users/Brazuka/Desktop/RemoveDuplicateEmails/updatedjazzhangsemails.txt', 'w')
 
