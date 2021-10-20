@@ -1,3 +1,5 @@
+import re
+
 # open files for reading
 email_file = open('jazzhangsemails.txt', 'r')
 email_file2 = open('campmerlotemails.txt', 'r')
@@ -14,6 +16,24 @@ email_list = email_list.lower().split(',')
 
 # this will be the compiled list
 new_list = []
+
+# program variables
+adding_emails = True
+user_input = input("Add a new email or enter q to quit: ").lower()
+
+# accept new emails as input
+def get_new_email():
+        new_list.append(user_input)
+        print("You just added: " + str(user_input))
+
+# add regex to check if email is formatted correctly
+while adding_emails:
+    if user_input == "q" or "quit":
+        adding_emails == False
+    elif user_input == re.findall(r"@\B", str(user_input)):
+        get_new_email()
+    else:
+        print("Invalid entry. Try again.")
 
 # remove duplicate emails and strip list items of whitespace
 for email in email_list:
