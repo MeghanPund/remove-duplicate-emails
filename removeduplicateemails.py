@@ -25,7 +25,7 @@ for email in email_list:
 
 # program variables
 adding_emails = True
-user_input = input("Add a new email or enter q to quit: ").lower().strip()
+user_input = input("Welcome to the email list deduplicator! Add a new email or enter q to quit: ").lower().strip()
 
 # accept new emails as input !! ADD REGEX TO CHECK EMAIL FORMAT !!
 def get_new_email():
