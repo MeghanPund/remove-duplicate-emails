@@ -1,3 +1,4 @@
+from os import remove
 import re
 
 # open files for reading
@@ -17,31 +18,39 @@ email_list = email_list.lower().split(',')
 # this will be the compiled list
 new_list = []
 
-# program variables
-adding_emails = True
-user_input = input("Add a new email or enter q to quit: ").lower()
-
-# accept new emails as input
-def get_new_email():
-        new_list.append(user_input)
-        print("You just added: " + str(user_input))
-
-# add regex to check if email is formatted correctly
-while adding_emails:
-    if user_input == "q" or "quit":
-        adding_emails == False
-    elif user_input == re.findall(r"@\B", str(user_input)):
-        get_new_email()
-    else:
-        print("Invalid entry. Try again.")
-
 # remove duplicate emails and strip list items of whitespace
 for email in email_list:
     if email not in new_list:
         new_list.append(email.strip())
 
+# program variables
+adding_emails = True
+user_input = input("Add a new email or enter q to quit: ").lower().strip()
+
+# accept new emails as input
+def get_new_email():
+    if user_input not in new_list:
+        new_list.append(user_input)
+        print("You just added: " + user_input)
+        return
+    elif user_input in new_list:
+        print("Sorry. This email already exists.")
+        return
+
+# master loop to add new emails to email list
+while adding_emails:
+    if user_input == "q" or user_input == "quit":
+        adding_emails == False
+        break
+    elif user_input != "q" or "quit":
+        get_new_email()
+        break
+    else:
+        print("Invalid input.")
+        break
+
 # for testing
-print(sorted(new_list))
+print(sorted(list(set(new_list))))
 
 # print how many emails are present in the list
 print("There are " + str(len(new_list)) + " unique emails in your list." )
