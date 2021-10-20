@@ -5,6 +5,8 @@ import re
 email_file = open('jazzhangsemails.txt', 'r')
 email_file2 = open('campmerlotemails.txt', 'r')
 
+# !!!add option to import email list!!!
+
 # compile lists
 email_list = email_file.read() + email_file2.read()
 
