@@ -27,7 +27,7 @@ for email in email_list:
 adding_emails = True
 user_input = input("Add a new email or enter q to quit: ").lower().strip()
 
-# accept new emails as input
+# accept new emails as input !! ADD REGEX TO CHECK EMAIL FORMAT !!
 def get_new_email():
     if user_input not in new_list:
         new_list.append(user_input)
@@ -49,8 +49,10 @@ while adding_emails:
         print("Invalid input.")
         break
 
+new_list = sorted(list(set(new_list)))
+
 # for testing
-print(sorted(list(set(new_list))))
+print(new_list)
 
 # print how many emails are present in the list
 print("There are " + str(len(new_list)) + " unique emails in your list." )
