@@ -1,18 +1,36 @@
 from os import remove
 import re
+from typing import Text
 
 # open files for reading
 email_file = open('jazzhangsemails.txt', 'r')
 email_file2 = open('campmerlotemails.txt', 'r')
-
-# !!!add option to import email list!!!
-
-# compile lists
 email_list = email_file.read() + email_file2.read()
 
-# close the O.G. email list files
-email_file.close()
-email_file2.close()
+# option for user to import email list!!!
+#def get_user_email_list():
+    
+#    does_user_have_list = input("Do you have an email list formatted as a .txt file that you would like to import? Enter Y for yes or N for no: ").upper
+#    global email_list
+
+#    if does_user_have_list == 'Y':
+#        user_email_list = input("Enter the filepath to your email list ex : ")
+#        user_email_file = open(str(user_email_list), 'r')
+#        email_list = email_list + user_email_file.read()
+#    elif does_user_have_list == 'N':
+        # compile lists
+#        email_list = email_file.read() + email_file2.read()
+#    else:
+#        print("Invalid input.")
+#        get_user_email_list()
+
+    # close the O.G. email list files
+#    email_file.close()
+#    email_file2.close()
+#    if 'user_email_file' in globals(): user_email_file.close()
+
+# called it
+#get_user_email_list()
 
 # all characters lowercase, split at commas (,)
 email_list = email_list.lower().split(',')
