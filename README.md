@@ -6,11 +6,11 @@ To run this program on Windows, Mac OS, or Linux, from within the command line/t
 Code Louisville Requirements met:
 1) Implement a “master loop” console application where the user can repeatedly enter
 commands/perform actions, including choosing to exit the program.
-- User may enter new email addresses, which are appended to the email list
+- User may enter new email addresses, which are appended to the email list. User enters q to quit.
 
 2) Create a dictionary or list, populate it with several values, retrieve at least one value, and
 use it in your program.
-- Created a list (Line 57: "new_list") which is populated from user input of new emails plus the retrieval of emails from multiple .txt files, which are split into list items at the commas. Values are retrieved from new_list when they are printed at the end (Line 60) and when they are written to a new file (Line 71)
+- Created a list "new_list" which is populated with user input of new emails plus the retrieval of emails from multiple .txt files, which are split into list items at commas. Values are retrieved from new_list when they are printed at the end of the program and when they are written to a new file.
 
 3) Read data from an external file, such as text, JSON, CSV, etc and use that data in your
 application.
