@@ -14,12 +14,22 @@ def get_user_email_list():
     does_user_have_list = input("Do you have an email list formatted as a .txt file that you would like to import? Enter Y for yes or N for no: ").upper()
         
     if does_user_have_list == "Y":
-        user_email_list = input("Enter the filepath to your email list: ")
-        # Add Error Handling for incorrect filepath entries, non-utf8 encoding
-        user_email_file = open(user_email_list, 'r')
-        email_list = email_list + user_email_file.read()        
-        print(sorted(list(set(email_list))))
-        print("Your list at " + user_email_list + " was added!")
+        while does_user_have_list:
+            user_email_list = input("Enter the filepath to your email list: ")
+            # Add Error Handling for incorrect filepath entries, non-utf8 encoding
+            try:
+                user_email_file = open(user_email_list, 'r')
+                email_list = email_list + user_email_file.read()        
+                print(sorted(list(set(email_list))))
+                print("Your list at " + user_email_list + " was added!")
+            except FileNotFoundError:
+                print("Oops - try entering your filepath again.")
+            except UnicodeDecodeError:
+                print("Sorry. We can currently only accept text files with urf8 formatting")
+            except:
+                print("Something went wrong.")    
+            else:
+                break
     elif does_user_have_list == "N":
         # compile lists
         print("No email list imported. Proceed to enter single emails.")
