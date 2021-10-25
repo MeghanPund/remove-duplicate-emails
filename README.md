@@ -12,7 +12,7 @@ use it in your program.
 
 3) Read data from an external file, such as text, JSON, CSV, etc and use that data in your
 application.
-- Read data from two .txt files (Lines 5 and 6). Used data to create new_list (Line 57). Wrote new_list, formatted with semi-colons instead of commas, to a new .txt file(Line 71).
+- Read data from .txt files (Lines 5 and 6). Used data to create new_list (Line 57). Wrote new_list, formatted with semi-colons instead of commas, to a new .txt file(Line 71).
 
 4) Analyze text and display information about it (ex: how many words in a paragraph).
 - Analyzed the length of new_list and display how many emails it holds(Line 63).
