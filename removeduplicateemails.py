@@ -16,7 +16,6 @@ def get_user_email_list():
     if does_user_have_list == "Y":
         while does_user_have_list:
             user_email_list = input("Enter the filepath to your email list: ")
-            # Add Error Handling for incorrect filepath entries, non-utf8 encoding
             try:
                 user_email_file = open(user_email_list, 'r')
                 email_list = email_list + user_email_file.read()        
