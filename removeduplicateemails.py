@@ -5,23 +5,28 @@ from typing import Text
 # open files for reading
 email_file = open('jazzhangsemails.txt', 'r')
 email_file2 = open('campmerlotemails.txt', 'r')
-email_list = email_file.read() + email_file2.read()
 
-# option for user to import email list!!!
+# option for user to import email list
 def get_user_email_list():
     
-    does_user_have_list = input("Do you have an email list formatted as a .txt file that you would like to import? Enter Y for yes or N for no: ").upper()
     global email_list
-
+    email_list = email_file.read() + email_file2.read()
+    does_user_have_list = input("Do you have an email list formatted as a .txt file that you would like to import? Enter Y for yes or N for no: ").upper()
+        
     if does_user_have_list == "Y":
         user_email_list = input("Enter the filepath to your email list: ")
-        user_email_file = open(str(user_email_list), 'r')
-        email_list = email_list + user_email_file.read()
+        # Add Error Handling for incorrect filepath entries, non-utf8 encoding
+        user_email_file = open(user_email_list, 'r')
+        email_list = email_list + user_email_file.read()        
+        print(sorted(list(set(email_list))))
+        print("Your list at " + user_email_list + " was added!")
     elif does_user_have_list == "N":
         # compile lists
-        email_list = email_file.read() + email_file2.read()
+        print("No email list imported. Proceed to enter single emails.")
+        print(sorted(list(set(email_list))))
     else:
         print("Invalid input.")
+        print(sorted(list(set(email_list))))
         get_user_email_list()
 
     # close the O.G. email list files
