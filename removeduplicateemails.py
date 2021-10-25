@@ -1,6 +1,10 @@
 from os import read, remove
 import re
 from typing import Text
+import logging
+
+# logging config
+logging.basicConfig(filename='error_log.txt', format='%(asctime)s %(message)s', encoding='utf-8', level=logging.DEBUG)
 
 # open for reading
 email_file = open('jazzhangsemails.txt', 'r')
@@ -24,12 +28,17 @@ def get_user_email_list():
                 print("Your list at " + user_email_list + " was added!")
             except FileNotFoundError:
                 print("Oops - try entering your filepath again.")
+                error_log = open('error_log.txt', 'a')
+                error_log.write(str('FileNotFoundError'))
             except UnicodeDecodeError:
                 print("Sorry. We can currently only accept text files with utf8 formatting.")
+                error_log.write(str('UnicodeDecodeError'))
             except:
-                print("Something went wrong.")    
+                print("Something went wrong.")
+                error_log.write(str("Unknown error"))  
             else:
                 break
+            error_log.close()        
     elif does_user_have_list == "N":
         # compile lists
         print(sorted(list(set(email_list))))
@@ -95,7 +104,7 @@ print("There are " + str(len(new_list)) + " unique emails in your list." )
 # open file for writing new email list
 new_file_name = input("What would you like your new email list to be called?: ")
 updated_email_list = open(str(new_file_name) + '.txt', 'x')
-print("You just created a new file called " + str(new_file_name) + ".txt! Your new email list is saved there.")
 
 # sort(alphabetize) list and format for use in gmail, then write new list to file
 updated_email_list.write(str(new_list).replace(",", ";").replace("'", ""))
+print("You just created a new file called " + str(new_file_name) + ".txt! Your new email list is saved there.")
