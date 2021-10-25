@@ -1,8 +1,8 @@
-from os import remove
+from os import read, remove
 import re
 from typing import Text
 
-# open files for reading
+# open for reading
 email_file = open('jazzhangsemails.txt', 'r')
 email_file2 = open('campmerlotemails.txt', 'r')
 
@@ -10,12 +10,13 @@ email_file2 = open('campmerlotemails.txt', 'r')
 def get_user_email_list():
     
     global email_list
-    email_list = email_file.read() + email_file2.read()
+    # all characters lowercase, split at commas (,)
+    email_list = (email_file.read() + email_file2.read()).lower().split(',')
     does_user_have_list = input("Do you have an email list formatted as a .txt file that you would like to import? Enter Y for yes or N for no: ").upper()
         
     if does_user_have_list == "Y":
         while does_user_have_list:
-            user_email_list = input("Enter the filepath to your email list: ")
+            user_email_list = str(input("Enter the filepath to your email list: "))
             try:
                 user_email_file = open(user_email_list, 'r')
                 email_list = email_list + user_email_file.read()        
@@ -24,15 +25,15 @@ def get_user_email_list():
             except FileNotFoundError:
                 print("Oops - try entering your filepath again.")
             except UnicodeDecodeError:
-                print("Sorry. We can currently only accept text files with urf8 formatting")
+                print("Sorry. We can currently only accept text files with utf8 formatting.")
             except:
                 print("Something went wrong.")    
             else:
                 break
     elif does_user_have_list == "N":
         # compile lists
-        print("No email list imported. Proceed to enter single emails.")
         print(sorted(list(set(email_list))))
+        print("No email list imported. Proceed to enter individual emails.")        
     else:
         print("Invalid input.")
         print(sorted(list(set(email_list))))
@@ -45,9 +46,6 @@ def get_user_email_list():
 
 # called it
 get_user_email_list()
-
-# all characters lowercase, split at commas (,)
-email_list = email_list.lower().split(',')
 
 # this will be the compiled list
 new_list = []
