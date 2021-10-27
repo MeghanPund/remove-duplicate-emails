@@ -7,7 +7,7 @@ from datetime import date, datetime
 # logging config
 logging.basicConfig(filename='error_log.txt', format='%(asctime)s %(message)s', encoding='utf-8', level=logging.DEBUG)
 
-# open for reading
+# open files for reading (r) and appending (a)
 email_file = open('jazzhangsemails.txt', 'r')
 email_file2 = open('campmerlotemails.txt', 'r')
 error_log = open('error_log.txt', 'a')
@@ -79,18 +79,25 @@ for email in email_list:
 adding_emails = True
 user_input = input("Welcome to the email list deduplicator! Add a new email or enter q to quit: ").lower().strip()
 
-# accept new emails as input !! ADD REGEX TO CHECK EMAIL FORMAT !!
+# accept new emails as input
 def get_new_email():
     global user_input
-    if user_input not in new_list:
-        new_list.append(user_input)
-        print("You just added: " + user_input)
-        user_input = input("Add another new email or enter q to quit: ").lower().strip()
-        return        
-    elif user_input in new_list:
-        print("Sorry. This email already exists.")
-        user_input = input("Add another new email or enter q to quit: ").lower().strip()
+    # regex string checks for a string of digits, characters, and/or numbers 
+    # followed by the @ symbol, followed by another string (the email domain), 
+    # followed by ., followed by the last string
+    valid_email = re.fullmatch(r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b', user_input)
 
+    if valid_email != None:
+        if user_input not in new_list:        
+                new_list.append(user_input)
+                print("You just added: " + user_input)
+                user_input = input("Add another new email or enter q to quit: ").lower().strip()                    
+        elif user_input in new_list:
+            print("Sorry. This email already exists.")
+            user_input = input("Add another new email or enter q to quit: ").lower().strip()
+    elif valid_email == None:
+            print("Invalid email entry. Try again.")
+            user_input = input("Add another new email or enter q to quit: ").lower().strip()
 
 # master loop to add new emails to email list
 while adding_emails:
