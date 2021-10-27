@@ -3,7 +3,9 @@
 A short Python program to compile email lists and remove duplicate emails. Also accepts new emails through user input.
 
 ## How to Run It
-To run this program on Windows, Mac OS, or Linux, from within the command line/terminal, change to the root directory and enter "python removeduplicateemails.py"
+1. Open a terminal or your favorite code editor (like VS Code) that has a built in terminal.
+2. Clone the GitHub repository to your computer by typing `git clone https://github.com/MeghanPund/remove-duplicate-emails` into the command line/terminal.
+3. Change (cd) to the root directory of the cloned repository and enter `python removeduplicateemails.py`
 
 ## Code Louisville Requirements met:
  **1) Implement a “master loop” console application where the user can repeatedly enter
