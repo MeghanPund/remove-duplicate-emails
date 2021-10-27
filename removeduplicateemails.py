@@ -1,7 +1,8 @@
-from os import read, remove
+from os import close, read, remove
 import re
 from typing import Text
 import logging
+from datetime import date, datetime
 
 # logging config
 logging.basicConfig(filename='error_log.txt', format='%(asctime)s %(message)s', encoding='utf-8', level=logging.DEBUG)
@@ -9,6 +10,16 @@ logging.basicConfig(filename='error_log.txt', format='%(asctime)s %(message)s', 
 # open for reading
 email_file = open('jazzhangsemails.txt', 'r')
 email_file2 = open('campmerlotemails.txt', 'r')
+error_log = open('error_log.txt', 'a')
+
+def write_error_to_log(error=str):
+    
+    error_log = open('error_log.txt', 'a')
+    error_date = str(datetime.now())
+    error_log.write(error_date + ' ' + error + '\n')
+    error_log.close()
+
+    return error_date, error
 
 # option for user to import email list
 def get_user_email_list():
@@ -28,24 +39,23 @@ def get_user_email_list():
                 print("Your list at " + user_email_list + " was added!")
             except FileNotFoundError:
                 print("Oops - try entering your filepath again.")
-                error_log = open('error_log.txt', 'a')
-                error_log.write(str('FileNotFoundError'))
+                write_error_to_log('FileNotFoundError')
             except UnicodeDecodeError:
                 print("Sorry. We can currently only accept text files with utf8 formatting.")
-                error_log.write(str('UnicodeDecodeError'))
-            except:
-                print("Something went wrong.")
-                error_log.write(str("Unknown error"))  
+                write_error_to_log('UnicodeDecodeError')
+            except ValueError:
+                print("I/O operation on closed file.")
+                write_error_to_log('ValueError')
             else:
+                print("Something went wrong.")
+                write_error_to_log('UnknownError')
                 break
-            error_log.close()        
+                 
     elif does_user_have_list == "N":
         # compile lists
-        print(sorted(list(set(email_list))))
         print("No email list imported. Proceed to enter individual emails.")        
     else:
         print("Invalid input.")
-        print(sorted(list(set(email_list))))
         get_user_email_list()
 
     # close the O.G. email list files
