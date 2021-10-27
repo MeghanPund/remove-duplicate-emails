@@ -31,9 +31,7 @@ them to a text file.**
 - When the user makes errors inputting their email list filepath, the errors are written to error_log.txt
 
  **6) Implement a regular expression (regex) to ensure a field either a phone number or an
-email address is always stored and displayed in the same format.
+email address is always stored and displayed in the same format.**
 - Check if emails input by user are valid with re.fullmatch(). If they are not, prompt user to re-enter email address correctly.
 
 ## Future Additions
-Planning to implement a regex to check that the user-entered emails are in the correct format.
-Also planning to get the current date and append it to the new file (containing the email list) when it's written so the user knows when it was created.
