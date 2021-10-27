@@ -8,8 +8,8 @@ from datetime import date, datetime
 logging.basicConfig(filename='error_log.txt', format='%(asctime)s %(message)s', encoding='utf-8', level=logging.DEBUG)
 
 # open files for reading (r) and appending (a)
-email_file = open('jazzhangsemails.txt', 'r')
-email_file2 = open('campmerlotemails.txt', 'r')
+email_file = open('dummyemaillist.txt', 'r')
+email_file2 = open('dummyemaillist2.txt', 'r')
 error_log = open('error_log.txt', 'a')
 
 # log error to .txt file with date+time stamp
