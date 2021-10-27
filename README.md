@@ -21,6 +21,10 @@ To run this program on Windows, Mac OS, or Linux, from within the command line/t
  **4) Analyze text and display information about it (ex: how many words in a paragraph).**
 - Analyzed the length of new_list and display how many emails it holds.
 
+ **5) Implement a log that records errors, invalid inputs, or other important events and writes
+them to a text file.**
+- When the user makes errors inputting their email list filepath, the errors are written to error_log.txt
+
 ## Future Additions
 Planning to implement a regex to check that the user-entered emails are in the correct format.
 Also planning to get the current date and append it to the new file (containing the email list) when it's written so the user knows when it was created.
