@@ -12,6 +12,7 @@ email_file = open('jazzhangsemails.txt', 'r')
 email_file2 = open('campmerlotemails.txt', 'r')
 error_log = open('error_log.txt', 'a')
 
+# log error to .txt file with date+time stamp
 def write_error_to_log(error=str):
     
     error_log = open('error_log.txt', 'a')
