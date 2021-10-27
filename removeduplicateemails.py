@@ -52,8 +52,7 @@ def get_user_email_list():
                 write_error_to_log('UnknownError')
                 break
                  
-    elif does_user_have_list == "N":
-        # compile lists
+    elif does_user_have_list == "N":        
         print("No email list imported. Proceed to enter individual emails.")        
     else:
         print("Invalid input.")
@@ -98,6 +97,7 @@ def get_new_email():
     elif valid_email == None:
             print("Invalid email entry. Try again.")
             user_input = input("Add another new email or enter q to quit: ").lower().strip()
+    return new_list
 
 # master loop to add new emails to email list
 while adding_emails:
