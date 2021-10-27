@@ -63,6 +63,8 @@ def get_user_email_list():
     email_file2.close()
     if 'user_email_file' in globals(): user_email_file.close()
 
+    return email_list
+
 # called it
 get_user_email_list()
 
