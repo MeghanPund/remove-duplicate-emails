@@ -35,7 +35,7 @@ def get_user_email_list():
             user_email_list = str(input("Enter the filepath to your email list: "))
             try:
                 user_email_file = open(user_email_list, 'r')
-                email_list = email_list + user_email_file.read()        
+                email_list = email_list + user_email_file.read().lower().split(',')
                 print(sorted(list(set(email_list))))
                 print("Your list at " + user_email_list + " was added!")
             except FileNotFoundError:
