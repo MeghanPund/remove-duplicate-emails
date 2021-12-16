@@ -1,11 +1,6 @@
-from os import close, read, remove
 import re
-from typing import Text
-import logging
-from datetime import date, datetime
+from datetime import datetime
 
-# logging config
-logging.basicConfig(filename='error_log.txt', format='%(asctime)s %(message)s', encoding='utf-8', level=logging.DEBUG)
 
 # open files for reading (r) and appending (a)
 email_file = open('dummyemaillist.txt', 'r')
