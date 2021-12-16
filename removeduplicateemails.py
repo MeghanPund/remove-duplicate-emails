@@ -70,6 +70,9 @@ new_list = []
 for email in email_list:
     if email not in new_list:
         new_list.append(email.strip())
+    elif email in new_list:
+        print(email + " appeared in multiple email lists. The duplicate has been removed")
+        continue    
 
 # program variables
 adding_emails = True
