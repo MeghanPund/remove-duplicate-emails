@@ -90,15 +90,15 @@ def get_new_email():
 
     if valid_email != None:
         if user_input not in new_list:        
-                new_list.append(user_input)
-                print("You just added: " + user_input)
-                user_input = input("Add another new email or enter q to quit: ").lower().strip()                    
+            new_list.append(user_input)
+            print("You just added: " + user_input)
+            user_input = input("Add another new email or enter q to quit: ").lower().strip()                    
         elif user_input in new_list:
             print("Sorry. This email already exists.")
-            user_input = input("Add another new email or enter q to quit: ").lower().strip()
+            user_input = input("Add another new email or enter q to quit: ").lower().strip()   
     elif valid_email == None:
             print("Invalid email entry. Try again.")
-            user_input = input("Add another new email or enter q to quit: ").lower().strip()
+            user_input = input("Add another new email or enter q to quit: ").lower().strip()   
     return new_list
 
 # master loop to add new emails to email list
