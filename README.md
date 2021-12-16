@@ -35,3 +35,6 @@ email address is always stored and displayed in the same format.**
 - Check if emails input by user are valid with re.fullmatch(). If they are not, prompt user to re-enter email address correctly.
 
 ## Future Additions
+1. Better error handling when user inputs email list from file. Current method of input uses filepath, which is prone to errors. Better method might be to have user copy
+and paste emails into preexisting file.
+2. Better formatting handling for user input of email list from file. Program currently only strips user's list of commas when, in reality, user might have a list separated by semi-colons, newlines, or something else entirely.
