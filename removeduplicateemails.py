@@ -63,7 +63,7 @@ def get_user_email_list():
 # called it
 get_user_email_list()
 
-# this will be the compiled list
+# this will be the compiled email list
 new_list = []
 
 # remove duplicate emails and strip list items of whitespace
@@ -71,7 +71,7 @@ for email in email_list:
     if email not in new_list:
         new_list.append(email.strip())
     elif email in new_list:
-        print(email + " appeared in multiple email lists. The duplicate has been removed")
+        print(email + " appeared in multiple email lists. The duplicate has been removed.")
         continue    
 
 # program variables
@@ -89,14 +89,12 @@ def get_new_email():
     if valid_email != None:
         if user_input not in new_list:        
             new_list.append(user_input)
-            print("You just added: " + user_input)
-            user_input = input("Add another new email or enter q to quit: ").lower().strip()                    
+            print("You just added: " + user_input)                   
         elif user_input in new_list:
             print("Sorry. This email already exists.")
-            user_input = input("Add another new email or enter q to quit: ").lower().strip()   
     elif valid_email == None:
             print("Invalid email entry. Try again.")
-            user_input = input("Add another new email or enter q to quit: ").lower().strip()   
+    user_input = input("Add another new email or enter q to quit: ").lower().strip()       
     return new_list
 
 # master loop to add new emails to email list
