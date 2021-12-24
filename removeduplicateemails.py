@@ -32,7 +32,7 @@ def get_user_email_list():
                 user_email_file = open(user_email_list, 'r')
                 email_list = email_list + user_email_file.read().lower().split(',')
                 print(sorted(list(set(email_list))))
-                print("Your list at " + user_email_list + " was added!")
+                print(f"Your list at {user_email_list} was added!")
             except FileNotFoundError:
                 print("Oops - try entering your filepath again.")
                 write_error_to_log('FileNotFoundError')
@@ -71,7 +71,7 @@ for email in email_list:
     if email not in new_list:
         new_list.append(email.strip())
     elif email in new_list:
-        print(email + " appeared in multiple email lists. The duplicate has been removed.")
+        print(f"{email} appeared in multiple email lists. The duplicate has been removed.")
         continue    
 
 # program variables
@@ -88,8 +88,7 @@ def get_new_email():
 
     if valid_email != None:
         if user_input not in new_list:        
-            new_list.append(user_input)
-            print("You just added: " + user_input)                   
+            new_list.append(user_input)               
         elif user_input in new_list:
             print("Sorry. This email already exists.")
     elif valid_email == None:
@@ -123,4 +122,4 @@ updated_email_list = open(str(new_file_name) + '.txt', 'x')
 
 # sort(alphabetize) list and format for use in gmail, then write new list to file
 updated_email_list.write(str(new_list).replace(",", ";").replace("'", ""))
-print("You just created a new file called " + str(new_file_name) + ".txt! Your new email list is saved there.")
+print("You just created a new file called " + new_file_name + ".txt! Your new email list is saved there.")
