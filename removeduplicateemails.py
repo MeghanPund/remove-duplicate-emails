@@ -41,7 +41,7 @@ def get_user_email_list():
             except ValueError:
                 print("I/O operation on closed file.")
                 write_error_to_log('ValueError')
-                break
+            break
                  
     elif does_user_have_list == "N":        
         print("No email list imported. Proceed to enter individual emails.")        
