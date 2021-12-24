@@ -31,7 +31,6 @@ def get_user_email_list():
             try:
                 user_email_file = open(user_email_list, 'r')
                 email_list = email_list + user_email_file.read().lower().split(',')
-                print(sorted(list(set(email_list))))
                 print(f"Your list at {user_email_list} was added!")
             except FileNotFoundError:
                 print("Oops - try entering your filepath again.")
@@ -42,9 +41,6 @@ def get_user_email_list():
             except ValueError:
                 print("I/O operation on closed file.")
                 write_error_to_log('ValueError')
-            else:
-                print("Something went wrong.")
-                write_error_to_log('UnknownError')
                 break
                  
     elif does_user_have_list == "N":        
