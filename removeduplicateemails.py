@@ -114,7 +114,7 @@ new_list = sorted(list(set(new_list)))
 print(new_list)
 
 # print how many emails are present in the list
-print("There are " + str(len(new_list)) + " unique emails in your list." )
+print(f"There are {str(len(new_list))} unique emails in your list." )
 
 # open file for writing new email list
 new_file_name = input("What would you like your new email list to be called?: ")
@@ -122,4 +122,4 @@ updated_email_list = open(str(new_file_name) + '.txt', 'x')
 
 # sort(alphabetize) list and format for use in gmail, then write new list to file
 updated_email_list.write(str(new_list).replace(",", ";").replace("'", ""))
-print("You just created a new file called " + new_file_name + ".txt! Your new email list is saved there.")
+print(f"You just created a new file called {new_file_name}.txt! Your new email list is saved there.")
