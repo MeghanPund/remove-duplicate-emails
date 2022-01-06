@@ -84,7 +84,8 @@ def get_new_email():
 
     if valid_email != None:
         if user_input not in new_list:        
-            new_list.append(user_input)               
+            new_list.append(user_input)
+            print(f'{user_input} added')               
         elif user_input in new_list:
             print("Sorry. This email already exists.")
     elif valid_email == None:
