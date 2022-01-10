@@ -8,9 +8,8 @@ email_file2 = open('dummyemaillist2.txt', 'r')
 error_log = open('error_log.txt', 'a')
 
 
-# log error to .txt file with date+time stamp
 def write_error_to_log(error=str):
-
+    '''Log error to .txt file with date+time stamp'''
     error_log = open('error_log.txt', 'a')
     error_date = str(datetime.now())
     error_log.write(error_date + ' ' + error + '\n')
@@ -19,9 +18,13 @@ def write_error_to_log(error=str):
     return error_date, error
 
 
-# option for user to import email list
 def get_user_email_list():
-
+    '''Option for user to import email list.
+    Prompts user to input whether or not they've got an email list,
+    then takes filepath to list (if present) and reads it into
+    the program. After importing list or if no list, prompts next phase of program,
+    which is to enter individual emails.
+    '''
     global email_list
     # all characters lowercase, split at commas (,)
     email_list = (email_file.read() + email_file2.read()).lower().split(',')
@@ -77,8 +80,14 @@ adding_emails = True
 user_input = input("Welcome to the email list deduplicator! Add a new email or enter q to quit: ").lower().strip()
 
 
-# accept new emails as input
 def get_new_email():
+    '''Accepts new emails as user input.
+    Prompts user for input of new emails, one by one,
+    to be added to list. When user has entered input,
+    a regex statement checks the formatting of the input
+    and returns an error if incorrect, along with a prompt
+    to retype the input.
+    '''
     global user_input
     # regex string checks for a string of digits, characters, and/or numbers
     # followed by the @ symbol, followed by another string (the email domain),
