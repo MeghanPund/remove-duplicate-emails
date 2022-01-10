@@ -7,6 +7,7 @@ email_file = open('dummyemaillist.txt', 'r')
 email_file2 = open('dummyemaillist2.txt', 'r')
 error_log = open('error_log.txt', 'a')
 
+
 # log error to .txt file with date+time stamp
 def write_error_to_log(error=str):
     
@@ -16,6 +17,7 @@ def write_error_to_log(error=str):
     error_log.close()
 
     return error_date, error
+
 
 # option for user to import email list
 def get_user_email_list():
@@ -74,6 +76,7 @@ for email in email_list:
 adding_emails = True
 user_input = input("Welcome to the email list deduplicator! Add a new email or enter q to quit: ").lower().strip()
 
+
 # accept new emails as input
 def get_new_email():
     global user_input
@@ -92,6 +95,7 @@ def get_new_email():
             print("Invalid email entry. Try again.")
     user_input = input("Add another new email or enter q to quit: ").lower().strip()       
     return new_list
+
 
 # master loop to add new emails to email list
 while adding_emails:
