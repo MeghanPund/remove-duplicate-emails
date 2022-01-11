@@ -19,7 +19,8 @@ def write_error_to_log(error=str):
 
 
 def get_user_email_list():
-    '''Option for user to import email list.
+    '''
+    Option for user to import email list.
     Prompts user to input whether or not they've got an email list,
     then takes filepath to list (if present) and reads it into
     the program. After importing list or if no list, prompts next phase of program,
@@ -81,7 +82,8 @@ user_input = input("Welcome to the email list deduplicator! Add a new email or e
 
 
 def get_new_email():
-    '''Accepts new emails as user input.
+    '''
+    Accepts new emails as user input.
     Prompts user for input of new emails, one by one,
     to be added to list. When user has entered input,
     a regex statement checks the formatting of the input
