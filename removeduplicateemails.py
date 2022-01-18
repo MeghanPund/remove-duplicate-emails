@@ -12,7 +12,7 @@ def write_error_to_log(error=str):
     '''Log error to .txt file with date+time stamp'''
     error_log = open('error_log.txt', 'a')
     error_date = str(datetime.now())
-    error_log.write(error_date + ' ' + error + '\n')
+    error_log.write(f'{error_date} {error}\n')
     error_log.close()
 
     return error_date, error
