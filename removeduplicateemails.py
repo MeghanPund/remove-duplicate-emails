@@ -3,9 +3,8 @@ from datetime import datetime
 
 
 # open files for reading (r) and appending (a)
-email_file = open('dummyemaillist.txt', 'r')
-email_file2 = open('dummyemaillist2.txt', 'r')
-error_log = open('error_log.txt', 'a')
+
+
 
 
 def write_error_to_log(error=str):
@@ -16,6 +15,9 @@ def write_error_to_log(error=str):
     error_log.close()
 
     return error_date, error
+
+with open('error_log.txt', 'a') as error_log:
+    write_error_to_log()
 
 
 def get_user_email_list():
@@ -28,7 +30,6 @@ def get_user_email_list():
     '''
     global email_list
     # all characters lowercase, split at commas (,)
-    email_list = (email_file.read() + email_file2.read()).lower().split(',')
     does_user_have_list = input("Do you have an email list formatted as a .txt file that you would like to import? Enter Y for yes or N for no: ").upper()
 
     if does_user_have_list == "Y":
@@ -54,16 +55,17 @@ def get_user_email_list():
         print("Invalid input.")
         get_user_email_list()
 
-    # close the O.G. email list files
-    email_file.close()
-    email_file2.close()
+    # close the user's email list files
     if 'user_email_file' in globals():
         user_email_file.close()
     return email_list
 
 
-# called it
-get_user_email_list()
+with open('dummyemaillist.txt', 'r') as email_file:
+    email_list = (email_file.read()).lower().split(',')
+    with open('dummyemaillist2.txt', 'r') as email_file2:
+        email_list += email_file2.read().lower().split(',')
+        get_user_email_list()
 
 # this will be the compiled email list
 new_list = []
