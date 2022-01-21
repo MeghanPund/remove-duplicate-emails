@@ -1,23 +1,13 @@
 import re
 from datetime import datetime
 
-
-# open files for reading (r) and appending (a)
-
-
-
-
-def write_error_to_log(error=str):
-    '''Log error to .txt file with date+time stamp'''
-    error_log = open('error_log.txt', 'a')
-    error_date = str(datetime.now())
-    error_log.write(f'{error_date} {error}\n')
-    error_log.close()
+def write_error_to_log(error):
+    '''Log error to .txt file with datetime stamp'''
+    with open('error_log.txt', 'a') as error_log:
+        error_date = str(datetime.now())
+        error_log.write(f'{error_date} {error}\n')
 
     return error_date, error
-
-with open('error_log.txt', 'a') as error_log:
-    write_error_to_log()
 
 
 def get_user_email_list():
@@ -36,8 +26,8 @@ def get_user_email_list():
         while does_user_have_list:
             user_email_list = str(input("Enter the filepath to your email list: "))
             try:
-                user_email_file = open(user_email_list, 'r')
-                email_list = email_list + user_email_file.read().lower().split(',')
+                with open(user_email_list, 'r') as user_email_file:
+                    email_list = email_list + user_email_file.read().lower().split(',')
                 print(f"Your list at {user_email_list} was added!")
             except FileNotFoundError:
                 print("Oops - try entering your filepath again.")
@@ -55,16 +45,12 @@ def get_user_email_list():
         print("Invalid input.")
         get_user_email_list()
 
-    # close the user's email list files
-    if 'user_email_file' in globals():
-        user_email_file.close()
     return email_list
 
 
 with open('dummyemaillist.txt', 'r') as email_file:
-    email_list = (email_file.read()).lower().split(',')
     with open('dummyemaillist2.txt', 'r') as email_file2:
-        email_list += email_file2.read().lower().split(',')
+        email_list = (email_file.read() + email_file2.read()).lower().split(',')
         get_user_email_list()
 
 # this will be the compiled email list
