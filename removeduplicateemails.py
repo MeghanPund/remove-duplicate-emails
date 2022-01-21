@@ -1,6 +1,7 @@
 import re
 from datetime import datetime
 
+
 def write_error_to_log(error):
     '''Log error to .txt file with datetime stamp'''
     with open('error_log.txt', 'a') as error_log:
