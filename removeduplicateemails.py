@@ -112,7 +112,7 @@ while adding_emails:
 new_list = sorted(list(set(new_list)))
 
 # for testing
-print(new_list)
+print(f'The emails currently in your list are: {new_list}')
 
 # print how many emails are present in the list
 print(f"There are {str(len(new_list))} unique emails in your list.")
